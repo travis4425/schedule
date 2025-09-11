@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thời Khóa Biểu Lớp 8 - Hướng Kỹ sư Phần mềm</title>
+    <style>
+      @media print {
+        body {
+          margin: 0;
+          padding: 10px;
+        }
+        .no-print {
+          display: none;
+        }
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 15px;
+        color: #333;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(45deg, #2196f3, #21cbf3);
+        color: white;
+        text-align: center;
+        padding: 25px;
+      }
+
+      .header h1 {
+        font-size: 2.2rem;
+        margin-bottom: 8px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .header p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+
+      .share-info {
+        background: #e3f2fd;
+        padding: 15px;
+        text-align: center;
+        font-size: 0.95rem;
+        color: #1976d2;
+        border-bottom: 1px solid #bbdefb;
+      }
+
+      .main-content {
+        display: grid;
+        grid-template-columns: 2.2fr 1fr;
+        gap: 25px;
+        padding: 25px;
+      }
+
+      .schedule-section {
+        background: #f8f9ff;
+        border-radius: 15px;
+        padding: 20px;
+      }
+
+      .schedule-grid {
+        display: grid;
+        gap: 15px;
+      }
+
+      .day-card {
+        background: white;
+        border-radius: 12px;
+        padding: 18px;
+        border-left: 4px solid #2196f3;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease;
+      }
+
+      .day-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
+      }
+
+      .day-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #2196f3;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid #e3f2fd;
+        padding-bottom: 8px;
+      }
+
+      .day-title::before {
+        content: "📅";
+        margin-right: 8px;
+      }
+
+      .time-slot {
+        display: flex;
+        margin-bottom: 10px;
+        align-items: center;
+      }
+
+      .time {
+        background: #e3f2fd;
+        color: #1976d2;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-weight: 600;
+        min-width: 95px;
+        text-align: center;
+        margin-right: 12px;
+        font-size: 0.85rem;
+      }
+
+      .subject {
+        flex: 1;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        line-height: 1.3;
+      }
+
+      .subject.math {
+        background: #fff3e0;
+        color: #f57c00;
+      }
+      .subject.programming {
+        background: #e8f5e8;
+        color: #388e3c;
+      }
+      .subject.english {
+        background: #fce4ec;
+        color: #c2185b;
+      }
+      .subject.school {
+        background: #f3e5f5;
+        color: #7b1fa2;
+      }
+      .subject.review {
+        background: #e0f2f1;
+        color: #00695c;
+      }
+      .subject.science {
+        background: #fff8e1;
+        color: #ff8f00;
+      }
+      .subject.rest {
+        background: #efebe9;
+        color: #5d4037;
+      }
+
+      .sidebar {
+        background: #f8f9ff;
+        border-radius: 15px;
+        padding: 20px;
+        height: fit-content;
+      }
+
+      .sidebar h3 {
+        color: #2196f3;
+        margin-bottom: 18px;
+        font-size: 1.3rem;
+        text-align: center;
+        border-bottom: 2px solid #e3f2fd;
+        padding-bottom: 8px;
+      }
+
+      .resource-category {
+        margin-bottom: 20px;
+      }
+
+      .resource-category h4 {
+        color: #1976d2;
+        font-size: 1rem;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+      }
+
+      .resource-category h4::before {
+        margin-right: 6px;
+      }
+
+      .math h4::before {
+        content: "🧮";
+      }
+      .programming h4::before {
+        content: "💻";
+      }
+      .english h4::before {
+        content: "🌍";
+      }
+      .science h4::before {
+        content: "🔬";
+      }
+      .tools h4::before {
+        content: "🛠️";
+      }
+      .weekly h4::before {
+        content: "🎯";
+      }
+
+      .resource-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .resource-list li {
+        margin-bottom: 6px;
+        padding: 6px 8px;
+        background: white;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        border-left: 3px solid #2196f3;
+      }
+
+      .resource-list a {
+        color: #1976d2;
+        text-decoration: none;
+      }
+
+      .resource-list a:hover {
+        text-decoration: underline;
+      }
+
+      .weekly-targets {
+        background: linear-gradient(45deg, #ff9800, #f57c00);
+        color: white;
+        padding: 18px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+      }
+
+      .weekly-targets h3 {
+        margin-bottom: 12px;
+        font-size: 1.2rem;
+        text-align: center;
+        color: white;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 8px;
+      }
+
+      .week-item {
+        margin-bottom: 12px;
+        padding: 8px 12px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        border-left: 3px solid white;
+      }
+
+      .week-title {
+        font-weight: bold;
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+      }
+
+      .week-goals {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        opacity: 0.95;
+      }
+
+      .goals {
+        background: linear-gradient(45deg, #4caf50, #45a049);
+        color: white;
+        padding: 18px;
+        border-radius: 12px;
+        margin-top: 20px;
+      }
+
+      .goals h3 {
+        margin-bottom: 12px;
+        font-size: 1.2rem;
+        text-align: center;
+        color: white;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 8px;
+      }
+
+      .goal-item {
+        margin-bottom: 6px;
+        padding-left: 18px;
+        position: relative;
+        font-size: 0.85rem;
+      }
+
+      .goal-item::before {
+        content: "🎯";
+        position: absolute;
+        left: 0;
+      }
+
+      .contact-info {
+        background: #fff3e0;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 15px;
+        text-align: center;
+      }
+
+      .contact-info h4 {
+        color: #f57c00;
+        margin-bottom: 8px;
+      }
+
+      .contact-info p {
+        font-size: 0.85rem;
+        color: #ef6c00;
+        line-height: 1.4;
+      }
+
+      @media (max-width: 768px) {
+        .main-content {
+          grid-template-columns: 1fr;
+        }
+
+        .header h1 {
+          font-size: 1.8rem;
+        }
+
+        .time-slot {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .time {
+          margin-right: 0;
+          margin-bottom: 6px;
+          min-width: auto;
+        }
+      }
+
+      .print-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #2196f3;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+        z-index: 1000;
+      }
+
+      .print-btn:hover {
+        background: #1976d2;
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>⭐ Thời Khóa Biểu Lớp 8 ⭐</h1>
+        <p>🎯 Hướng Kỹ sư Phần mềm - Cân bằng Toán, Lập trình, Tiếng Anh</p>
+      </div>
+
+      <div class="share-info">
+        <strong>📤 Bản cập nhật:</strong> Thời gian học buổi sáng 7h30-11h30, có
+        mốc đánh giá hàng tuần. Cập nhật tháng 9/2024.
+      </div>
+
+      <div class="main-content">
+        <div class="schedule-section">
+          <div class="schedule-grid">
+            <!-- Thứ 2 -->
+            <div class="day-card">
+              <div class="day-title">Thứ Hai - Foundation Day</div>
+              <div class="time-slot">
+                <div class="time">7h30-9h</div>
+                <div class="subject math">🧮 Toán Logic & Problem Solving</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">9h-9h30</div>
+                <div class="subject rest">☕ Nghỉ giải lao</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">9h30-11h30</div>
+                <div class="subject programming">
+                  💻 Lập trình Cơ bản (Scratch)
+                </div>
+              </div>
+              <div class="time-slot">
+                <div class="time">13h-17h15</div>
+                <div class="subject school">🏫 Học ở trường</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">18h30-19h30</div>
+                <div class="subject review">📚 Ôn bài (ưu tiên Toán, Lý)</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">19h30-20h15</div>
+                <div class="subject english">🌍 English for Tech</div>
+              </div>
+            </div>
+
+            <!-- Thứ 3 -->
+            <div class="day-card">
+              <div class="day-title">Thứ Ba - Creative Day</div>
+              <div class="time-slot">
+                <div class="time">7h30-9h</div>
+                <div class="subject english">🇬🇧 English Enhancement</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">9h-9h30</div>
+                <div class="subject rest">☕ Nghỉ giải lao</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">9h30-11h30</div>
+                <div class="subject programming">💻 Creative Programming</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">13h-17h15</div>
+                <div class="subject school">🏫 Học ở trường</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">18h30-19h30</div>
+                <div class="subject review">📚 Ôn bài</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">19h30-20h15</div>
+                <div class="subject science">📖 Science Reading</div>
+              </div>
+            </div>
+
+            <!-- Thứ 4 -->
+            <div class="day-card">
+              <div class="day-title">Thứ Tư - Project Day</div>
+              <div class="time-slot">
+                <div class="time">7h30-9h</div>
+                <div class="subject math">🧪 Toán + Lý tư duy</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">9h-9h30</div>
+                <div class="subject rest">☕ Nghỉ giải lao</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">9h30-11h30</div>
+                <div class="subject programming">💻 Project Development</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">13h-17h15</div>
+                <div class="subject school">🏫 Học ở trường</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">18h30-19h30</div>
+                <div class="subject review">📚 Ôn bài</div>
+              </div>
+            </div>
+
+            <!-- Thứ 5 -->
+            <div class="day-card">
+              <div class="day-title">Thứ Năm - Innovation Day</div>
+              <div class="time-slot">
+                <div class="time">7h30-9h</div>
+                <div class="subject review">📝 Văn + Logic Writing</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">9h-9h30</div>
+                <div class="subject rest">☕ Nghỉ giải lao</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">9h30-11h30</div>
+                <div class="subject programming">🔧 Mini Project Day</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">13h-17h15</div>
+                <div class="subject school">🏫 Học ở trường</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">18h30-19h30</div>
+                <div class="subject review">📚 Ôn bài</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">19h30-20h15</div>
+                <div class="subject science">🎥 Educational Videos</div>
+              </div>
+            </div>
+
+            <!-- Thứ 6 -->
+            <div class="day-card">
+              <div class="day-title">Thứ Sáu - Practice Day</div>
+              <div class="time-slot">
+                <div class="time">7h30-9h</div>
+                <div class="subject math">🧮 Math Practice Intensive</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">9h-9h30</div>
+                <div class="subject rest">☕ Nghỉ giải lao</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">9h30-11h30</div>
+                <div class="subject programming">💻 Explore New Tools</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">13h-17h15</div>
+                <div class="subject school">🏫 Học ở trường</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">18h30-19h30</div>
+                <div class="subject review">📚 Ôn bài</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">19h30-20h15</div>
+                <div class="subject english">🌍 Tech English + Vocabulary</div>
+              </div>
+            </div>
+
+            <!-- Thứ 7 -->
+            <div class="day-card">
+              <div class="day-title">Thứ Bảy - Deep Learning Day</div>
+              <div class="time-slot">
+                <div class="time">7h30-9h</div>
+                <div class="subject math">🧮 Advanced Math Session</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">9h-9h30</div>
+                <div class="subject rest">☕ Nghỉ giải lao</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">9h30-10h30</div>
+                <div class="subject english">🇬🇧 English Immersion</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">10h30-11h30</div>
+                <div class="subject programming">
+                  💻 Deep Programming Session
+                </div>
+              </div>
+              <div class="time-slot">
+                <div class="time">11h30-19h30</div>
+                <div class="subject rest">😴 Nghỉ ngơi & Family time</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">19h30-20h30</div>
+                <div class="subject review">📊 Week Review + Planning</div>
+              </div>
+            </div>
+
+            <!-- Chủ nhật -->
+            <div class="day-card">
+              <div class="day-title">Chủ Nhật - Recovery & Extra Class</div>
+              <div class="time-slot">
+                <div class="time">8h-9h</div>
+                <div class="subject programming">💻 Fun Coding Challenge</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">9h-11h</div>
+                <div class="subject school">🏫 Học thêm ở trường</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">11h-15h</div>
+                <div class="subject rest">🎮 Free time & Family</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">15h-16h</div>
+                <div class="subject english">🌍 English Fun Activities</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">16h-17h</div>
+                <div class="subject math">🧮 Math Games & Logic</div>
+              </div>
+              <div class="time-slot">
+                <div class="time">19h-20h</div>
+                <div class="subject review">🛠️ Prepare New Week</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar">
+          <div class="weekly-targets">
+            <h3>🎯 Mốc đạt được mỗi tuần</h3>
+
+            <div class="week-item">
+              <div class="week-title">Tuần 1-2: Làm quen</div>
+              <div class="week-goals">
+                • Hoàn thành 3 bài Scratch cơ bản<br />
+                • Học 20 từ vựng tiếng Anh tech<br />
+                • Giải 10 bài toán logic
+              </div>
+            </div>
+
+            <div class="week-item">
+              <div class="week-title">Tuần 3-4: Phát triển</div>
+              <div class="week-goals">
+                • Tạo 1 game Scratch hoàn chỉnh<br />
+                • Đọc hiểu 5 bài văn tiếng Anh ngắn<br />
+                • Nắm vững phép toán phân số
+              </div>
+            </div>
+
+            <div class="week-item">
+              <div class="week-title">Tuần 5-8: Tiến bộ</div>
+              <div class="week-goals">
+                • Hoàn thành 1 mini project lớn<br />
+                • Nói tiếng Anh 5 phút liên tục<br />
+                • Giải bài toán đại số cơ bản
+              </div>
+            </div>
+
+            <div class="week-item">
+              <div class="week-title">Tuần 9-12: Thành thạo</div>
+              <div class="week-goals">
+                • Code được basic Python<br />
+                • Viết essay tiếng Anh 200 từ<br />
+                • Tự tin với toán lớp 8
+              </div>
+            </div>
+          </div>
+
+          <h3>📚 Tài Liệu Học Tập</h3>
+
+          <div class="resource-category math">
+            <h4>Toán & Logic</h4>
+            <ul class="resource-list">
+              <li>
+                <a href="https://vi.khanacademy.org/math" target="_blank"
+                  >Khan Academy Math</a
+                >
+              </li>
+              <li>
+                <a href="https://brilliant.org/" target="_blank"
+                  >Brilliant Problem Solving</a
+                >
+              </li>
+              <li>
+                <a href="https://www.ixl.com/math/" target="_blank"
+                  >IXL Math Practice</a
+                >
+              </li>
+              <li>
+                <a href="https://artofproblemsolving.com/" target="_blank"
+                  >AoPS Advanced Math</a
+                >
+              </li>
+              <li>
+                <a href="https://www.mathway.com/" target="_blank"
+                  >Mathway Calculator</a
+                >
+              </li>
+              <li>
+                <a href="https://www.desmos.com/calculator" target="_blank"
+                  >Desmos Graphing</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="resource-category programming">
+            <h4>Lập Trình</h4>
+            <ul class="resource-list">
+              <li>
+                <a href="https://scratch.mit.edu/" target="_blank"
+                  >Scratch MIT</a
+                >
+              </li>
+              <li><a href="https://code.org/" target="_blank">Code.org</a></li>
+              <li>
+                <a href="https://blockly.games/" target="_blank"
+                  >Blockly Games</a
+                >
+              </li>
+              <li>
+                <a href="https://www.tinkercad.com/" target="_blank"
+                  >Tinkercad 3D Design</a
+                >
+              </li>
+              <li>
+                <a href="https://appinventor.mit.edu/" target="_blank"
+                  >MIT App Inventor</a
+                >
+              </li>
+              <li>
+                <a href="https://replit.com/" target="_blank"
+                  >Replit Online IDE</a
+                >
+              </li>
+              <li>
+                <a href="https://www.w3schools.com/python/" target="_blank"
+                  >Python Tutorial</a
+                >
+              </li>
+              <li>
+                <a href="https://trinket.io/python" target="_blank"
+                  >Trinket Python</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="resource-category english">
+            <h4>Tiếng Anh Tech</h4>
+            <ul class="resource-list">
+              <li>
+                <a href="https://www.duolingo.com/" target="_blank">Duolingo</a>
+              </li>
+              <li>
+                <a href="https://www.bbc.co.uk/learningenglish/" target="_blank"
+                  >BBC Learning English</a
+                >
+              </li>
+              <li>
+                <a href="https://dictionary.cambridge.org/" target="_blank"
+                  >Cambridge Dictionary</a
+                >
+              </li>
+              <li>
+                <a href="https://quizlet.com/" target="_blank"
+                  >Quizlet Vocabulary</a
+                >
+              </li>
+              <li>
+                <a href="https://www.fluentu.com/" target="_blank"
+                  >FluentU Tech English</a
+                >
+              </li>
+              <li>
+                <a href="https://www.englishclass101.com/" target="_blank"
+                  >EnglishClass101</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="resource-category science">
+            <h4>Khoa Học & Video</h4>
+            <ul class="resource-list">
+              <li>
+                <a href="https://kids.nationalgeographic.com/" target="_blank"
+                  >Nat Geo Kids</a
+                >
+              </li>
+              <li>
+                <a href="https://www.khanacademy.org/science" target="_blank"
+                  >Khan Academy Science</a
+                >
+              </li>
+              <li>
+                <a href="https://phet.colorado.edu/vi/" target="_blank"
+                  >PhET Simulations</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/user/crashcourse"
+                  target="_blank"
+                  >Crash Course</a
+                >
+              </li>
+              <li>
+                <a href="https://www.youtube.com/teded" target="_blank"
+                  >TED-Ed</a
+                >
+              </li>
+              <li>
+                <a href="https://www.youtube.com/c/3blue1brown" target="_blank"
+                  >3Blue1Brown</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="resource-category tools">
+            <h4>Công Cụ Hỗ Trợ</h4>
+            <ul class="resource-list">
+              <li>
+                <a href="https://code.visualstudio.com/" target="_blank"
+                  >VS Code Editor</a
+                >
+              </li>
+              <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+              <li><a href="https://codepen.io/" target="_blank">CodePen</a></li>
+              <li>
+                <a href="https://www.notion.so/" target="_blank"
+                  >Notion Notes</a
+                >
+              </li>
+              <li>
+                <a href="https://ankiweb.net/" target="_blank"
+                  >Anki Flashcards</a
+                >
+              </li>
+              <li>
+                <a href="https://www.canva.com/" target="_blank"
+                  >Canva Design</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="goals">
+            <h3>🎯 Mục Tiêu 6 Tháng Đầu</h3>
+            <div class="goal-item">
+              Hoàn thành Algebra Basics trên Khan Academy
+            </div>
+            <div class="goal-item">Tạo được 5+ Scratch projects hoàn chỉnh</div>
+            <div class="goal-item">Học thuộc 200+ từ vựng tiếng Anh tech</div>
+            <div class="goal-item">Giữ điểm cao ở tất cả môn học chính</div>
+            <div class="goal-item">Sẵn sàng chuyển sang Python text-based</div>
+            <div class="goal-item">Xây dựng portfolio 10+ projects đa dạng</div>
+          </div>
+
+          <div class="contact-info">
+            <h4>💡 Lời khuyên</h4>
+            <p>
+              <strong>Balance là chìa khóa:</strong> Không nên học quá nhiều một
+              lúc. Hãy duy trì đều đặn và tăng dần difficulty theo thời gian.
+              Nếu thấy stress thì giảm tải ngay!
+            </p>
+            <p>
+              <strong>Fun first:</strong> Ưu tiên sự thú vị và đam mê hơn là
+              hiệu quả ngắn hạn.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="print-btn no-print" onclick="window.print()">
+      🖨️ In/Save PDF
+    </button>
+
+    <script>
+      // Add smooth scrolling and interactive features
+      document.querySelectorAll('a[href^="http"]').forEach((link) => {
+        link.addEventListener("click", function (e) {
+          // Links will open in new tab
+          this.target = "_blank";
+        });
+      });
+
+      // Add hover effects
+      document.querySelectorAll(".day-card").forEach((card) => {
+        card.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-3px)";
+        });
+
+        card.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0)";
+        });
+      });
+    </script>
+  </body>
+</html>
