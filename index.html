@@ -3,18 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thời Khóa Biểu Lớp 8 - Hướng Kỹ sư Phần mềm</title>
+    <title>Thời Khóa Biểu Lớp 8/14 - THCS An Nhon</title>
     <style>
-      @media print {
-        body {
-          margin: 0;
-          padding: 10px;
-        }
-        .no-print {
-          display: none;
-        }
-      }
-
       * {
         margin: 0;
         padding: 0;
@@ -30,7 +20,7 @@
       }
 
       .container {
-        max-width: 1400px;
+        max-width: 1600px;
         margin: 0 auto;
         background: white;
         border-radius: 20px;
@@ -56,7 +46,7 @@
         opacity: 0.9;
       }
 
-      .share-info {
+      .school-info {
         background: #e3f2fd;
         padding: 15px;
         text-align: center;
@@ -67,7 +57,7 @@
 
       .main-content {
         display: grid;
-        grid-template-columns: 2.2fr 1fr;
+        grid-template-columns: 2.5fr 1fr;
         gap: 25px;
         padding: 25px;
       }
@@ -78,95 +68,98 @@
         padding: 20px;
       }
 
-      .schedule-grid {
-        display: grid;
-        gap: 15px;
-      }
-
       .day-card {
         background: white;
         border-radius: 12px;
         padding: 18px;
+        margin-bottom: 20px;
         border-left: 4px solid #2196f3;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        transition: transform 0.2s ease;
-      }
-
-      .day-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
       }
 
       .day-title {
         font-size: 1.25rem;
         font-weight: bold;
         color: #2196f3;
-        margin-bottom: 12px;
+        margin-bottom: 15px;
         display: flex;
         align-items: center;
         border-bottom: 2px solid #e3f2fd;
         padding-bottom: 8px;
       }
 
-      .day-title::before {
-        content: "📅";
-        margin-right: 8px;
+      .session {
+        margin-bottom: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .session-header {
+        background: #f5f5f5;
+        padding: 8px 12px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        color: #555;
       }
 
       .time-slot {
         display: flex;
-        margin-bottom: 10px;
-        align-items: center;
+        margin-bottom: 8px;
+        align-items: flex-start;
+        padding: 8px 12px;
       }
 
       .time {
         background: #e3f2fd;
         color: #1976d2;
-        padding: 6px 10px;
-        border-radius: 6px;
+        padding: 4px 8px;
+        border-radius: 4px;
         font-weight: 600;
-        min-width: 95px;
+        min-width: 80px;
         text-align: center;
         margin-right: 12px;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
       }
 
-      .subject {
+      .subject-detail {
         flex: 1;
-        padding: 8px 12px;
-        border-radius: 8px;
-        font-size: 0.95rem;
-        font-weight: 500;
-        line-height: 1.3;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        line-height: 1.4;
       }
 
-      .subject.math {
+      .study-home {
         background: #fff3e0;
-        color: #f57c00;
+        border-left: 3px solid #ff9800;
       }
-      .subject.programming {
-        background: #e8f5e8;
-        color: #388e3c;
-      }
-      .subject.english {
-        background: #fce4ec;
-        color: #c2185b;
-      }
-      .subject.school {
+
+      .school-class {
         background: #f3e5f5;
-        color: #7b1fa2;
+        border-left: 3px solid #9c27b0;
       }
-      .subject.review {
-        background: #e0f2f1;
-        color: #00695c;
-      }
-      .subject.science {
-        background: #fff8e1;
-        color: #ff8f00;
-      }
-      .subject.rest {
+
+      .break-time {
         background: #efebe9;
-        color: #5d4037;
+        border-left: 3px solid #795548;
+      }
+
+      .study-title {
+        font-weight: bold;
+        color: #f57c00;
+        margin-bottom: 4px;
+      }
+
+      .study-content {
+        font-size: 0.8rem;
+        margin-bottom: 4px;
+      }
+
+      .study-resources {
+        font-size: 0.75rem;
+        color: #666;
+        font-style: italic;
       }
 
       .sidebar {
@@ -174,73 +167,6 @@
         border-radius: 15px;
         padding: 20px;
         height: fit-content;
-      }
-
-      .sidebar h3 {
-        color: #2196f3;
-        margin-bottom: 18px;
-        font-size: 1.3rem;
-        text-align: center;
-        border-bottom: 2px solid #e3f2fd;
-        padding-bottom: 8px;
-      }
-
-      .resource-category {
-        margin-bottom: 20px;
-      }
-
-      .resource-category h4 {
-        color: #1976d2;
-        font-size: 1rem;
-        margin-bottom: 8px;
-        display: flex;
-        align-items: center;
-      }
-
-      .resource-category h4::before {
-        margin-right: 6px;
-      }
-
-      .math h4::before {
-        content: "🧮";
-      }
-      .programming h4::before {
-        content: "💻";
-      }
-      .english h4::before {
-        content: "🌍";
-      }
-      .science h4::before {
-        content: "🔬";
-      }
-      .tools h4::before {
-        content: "🛠️";
-      }
-      .weekly h4::before {
-        content: "🎯";
-      }
-
-      .resource-list {
-        list-style: none;
-        padding: 0;
-      }
-
-      .resource-list li {
-        margin-bottom: 6px;
-        padding: 6px 8px;
-        background: white;
-        border-radius: 6px;
-        font-size: 0.8rem;
-        border-left: 3px solid #2196f3;
-      }
-
-      .resource-list a {
-        color: #1976d2;
-        text-decoration: none;
-      }
-
-      .resource-list a:hover {
-        text-decoration: underline;
       }
 
       .weekly-targets {
@@ -280,53 +206,40 @@
         opacity: 0.95;
       }
 
-      .goals {
-        background: linear-gradient(45deg, #4caf50, #45a049);
-        color: white;
-        padding: 18px;
+      .resources-section {
+        background: white;
         border-radius: 12px;
-        margin-top: 20px;
-      }
-
-      .goals h3 {
-        margin-bottom: 12px;
-        font-size: 1.2rem;
-        text-align: center;
-        color: white;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-        padding-bottom: 8px;
-      }
-
-      .goal-item {
-        margin-bottom: 6px;
-        padding-left: 18px;
-        position: relative;
-        font-size: 0.85rem;
-      }
-
-      .goal-item::before {
-        content: "🎯";
-        position: absolute;
-        left: 0;
-      }
-
-      .contact-info {
-        background: #fff3e0;
         padding: 15px;
-        border-radius: 10px;
-        margin-top: 15px;
-        text-align: center;
+        margin-bottom: 15px;
       }
 
-      .contact-info h4 {
-        color: #f57c00;
-        margin-bottom: 8px;
+      .resources-section h4 {
+        color: #2196f3;
+        margin-bottom: 10px;
+        font-size: 1rem;
       }
 
-      .contact-info p {
-        font-size: 0.85rem;
-        color: #ef6c00;
-        line-height: 1.4;
+      .resource-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .resource-list li {
+        margin-bottom: 5px;
+        padding: 4px 8px;
+        background: #f8f9ff;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        border-left: 2px solid #2196f3;
+      }
+
+      .resource-list a {
+        color: #1976d2;
+        text-decoration: none;
+      }
+
+      .resource-list a:hover {
+        text-decoration: underline;
       }
 
       @media (max-width: 768px) {
@@ -334,13 +247,8 @@
           grid-template-columns: 1fr;
         }
 
-        .header h1 {
-          font-size: 1.8rem;
-        }
-
         .time-slot {
           flex-direction: column;
-          align-items: stretch;
         }
 
         .time {
@@ -369,223 +277,734 @@
         background: #1976d2;
         transform: translateY(-2px);
       }
+
+      @media print {
+        .print-btn {
+          display: none;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="header">
-        <h1>⭐ Thời Khóa Biểu Lớp 8 ⭐</h1>
-        <p>🎯 Hướng Kỹ sư Phần mềm - Cân bằng Toán, Lập trình, Tiếng Anh</p>
+        <h1>📚 Thời Khóa Biểu Lớp 8/14</h1>
+        <p>🏫 THCS An Nhon - Năm học 2025-2026 - HK1</p>
       </div>
 
-      <div class="share-info">
-        <strong>📤 Bản cập nhật:</strong> Thời gian học buổi sáng 7h30-11h30, có
-        mốc đánh giá hàng tuần. Cập nhật tháng 9/2024.
+      <div class="school-info">
+        <strong>👩‍🏫 GVCN:</strong> Trần Thị Thoa |
+        <strong>📅 Áp dụng từ:</strong> 15/09/2025 |
+        <strong>🎯 Hướng:</strong> Kỹ sư Phần mềm & Toán học
       </div>
 
       <div class="main-content">
         <div class="schedule-section">
-          <div class="schedule-grid">
-            <!-- Thứ 2 -->
-            <div class="day-card">
-              <div class="day-title">Thứ Hai - Foundation Day</div>
-              <div class="time-slot">
-                <div class="time">7h30-9h</div>
-                <div class="subject math">🧮 Toán Logic & Problem Solving</div>
+          <!-- THỨ 2 -->
+          <div class="day-card">
+            <div class="day-title">🔷 THỨ HAI - Foundation Monday</div>
+
+            <div class="session">
+              <div class="session-header">
+                🌅 Buổi Sáng - Học ở nhà (7:30 - 12:00)
               </div>
+
               <div class="time-slot">
-                <div class="time">9h-9h30</div>
-                <div class="subject rest">☕ Nghỉ giải lao</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">9h30-11h30</div>
-                <div class="subject programming">
-                  💻 Lập trình Cơ bản (Scratch)
+                <div class="time">7:30-8:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🧮 Toán - Ôn tập & Làm BT</div>
+                  <div class="study-content">
+                    • Ôn lại bài học trước + Làm BT SGK + SBT<br />• Focus:
+                    Phương trình bậc nhất, Bất phương trình
+                  </div>
+                  <div class="study-resources">
+                    📖 SGK Toán 8, SBT Toán 8, Khan Academy
+                  </div>
                 </div>
               </div>
-              <div class="time-slot">
-                <div class="time">13h-17h15</div>
-                <div class="subject school">🏫 Học ở trường</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">18h30-19h30</div>
-                <div class="subject review">📚 Ôn bài (ưu tiên Toán, Lý)</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">19h30-20h15</div>
-                <div class="subject english">🌍 English for Tech</div>
-              </div>
-            </div>
 
-            <!-- Thứ 3 -->
-            <div class="day-card">
-              <div class="day-title">Thứ Ba - Creative Day</div>
               <div class="time-slot">
-                <div class="time">7h30-9h</div>
-                <div class="subject english">🇬🇧 English Enhancement</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">9h-9h30</div>
-                <div class="subject rest">☕ Nghỉ giải lao</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">9h30-11h30</div>
-                <div class="subject programming">💻 Creative Programming</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">13h-17h15</div>
-                <div class="subject school">🏫 Học ở trường</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">18h30-19h30</div>
-                <div class="subject review">📚 Ôn bài</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">19h30-20h15</div>
-                <div class="subject science">📖 Science Reading</div>
-              </div>
-            </div>
-
-            <!-- Thứ 4 -->
-            <div class="day-card">
-              <div class="day-title">Thứ Tư - Project Day</div>
-              <div class="time-slot">
-                <div class="time">7h30-9h</div>
-                <div class="subject math">🧪 Toán + Lý tư duy</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">9h-9h30</div>
-                <div class="subject rest">☕ Nghỉ giải lao</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">9h30-11h30</div>
-                <div class="subject programming">💻 Project Development</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">13h-17h15</div>
-                <div class="subject school">🏫 Học ở trường</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">18h30-19h30</div>
-                <div class="subject review">📚 Ôn bài</div>
-              </div>
-            </div>
-
-            <!-- Thứ 5 -->
-            <div class="day-card">
-              <div class="day-title">Thứ Năm - Innovation Day</div>
-              <div class="time-slot">
-                <div class="time">7h30-9h</div>
-                <div class="subject review">📝 Văn + Logic Writing</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">9h-9h30</div>
-                <div class="subject rest">☕ Nghỉ giải lao</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">9h30-11h30</div>
-                <div class="subject programming">🔧 Mini Project Day</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">13h-17h15</div>
-                <div class="subject school">🏫 Học ở trường</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">18h30-19h30</div>
-                <div class="subject review">📚 Ôn bài</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">19h30-20h15</div>
-                <div class="subject science">🎥 Educational Videos</div>
-              </div>
-            </div>
-
-            <!-- Thứ 6 -->
-            <div class="day-card">
-              <div class="day-title">Thứ Sáu - Practice Day</div>
-              <div class="time-slot">
-                <div class="time">7h30-9h</div>
-                <div class="subject math">🧮 Math Practice Intensive</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">9h-9h30</div>
-                <div class="subject rest">☕ Nghỉ giải lao</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">9h30-11h30</div>
-                <div class="subject programming">💻 Explore New Tools</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">13h-17h15</div>
-                <div class="subject school">🏫 Học ở trường</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">18h30-19h30</div>
-                <div class="subject review">📚 Ôn bài</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">19h30-20h15</div>
-                <div class="subject english">🌍 Tech English + Vocabulary</div>
-              </div>
-            </div>
-
-            <!-- Thứ 7 -->
-            <div class="day-card">
-              <div class="day-title">Thứ Bảy - Deep Learning Day</div>
-              <div class="time-slot">
-                <div class="time">7h30-9h</div>
-                <div class="subject math">🧮 Advanced Math Session</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">9h-9h30</div>
-                <div class="subject rest">☕ Nghỉ giải lao</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">9h30-10h30</div>
-                <div class="subject english">🇬🇧 English Immersion</div>
-              </div>
-              <div class="time-slot">
-                <div class="time">10h30-11h30</div>
-                <div class="subject programming">
-                  💻 Deep Programming Session
+                <div class="time">8:30-9:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🌍 Tiếng Anh - Morning Practice</div>
+                  <div class="study-content">
+                    • Học từ vựng unit mới + Grammar review<br />• Luyện nghe 15
+                    phút + Speaking practice
+                  </div>
+                  <div class="study-resources">
+                    📱 Duolingo, BBC Learning English, SGK TA 8
+                  </div>
                 </div>
               </div>
+
               <div class="time-slot">
-                <div class="time">11h30-19h30</div>
-                <div class="subject rest">😴 Nghỉ ngơi & Family time</div>
+                <div class="time">9:30-10:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">
+                    💻 Lập trình - Scratch/Python Basics
+                  </div>
+                  <div class="study-content">
+                    • Thực hành project tuần này<br />• Hoàn thiện 1 mini-game
+                    hoặc animation
+                  </div>
+                  <div class="study-resources">
+                    🔗 Scratch.mit.edu, Replit.com, Code.org
+                  </div>
+                </div>
               </div>
+
               <div class="time-slot">
-                <div class="time">19h30-20h30</div>
-                <div class="subject review">📊 Week Review + Planning</div>
+                <div class="time">10:30-12:00</div>
+                <div class="subject-detail break-time">
+                  <div class="study-title">🍳 Breakfast + Free Study</div>
+                  <div class="study-content">
+                    • Ăn sáng + nghỉ ngơi<br />• Đọc sách, ôn bài tự do
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- Chủ nhật -->
-            <div class="day-card">
-              <div class="day-title">Chủ Nhật - Recovery & Extra Class</div>
+            <div class="session">
+              <div class="session-header">
+                🏫 Buổi Chiều - Học ở trường (13:00 - 17:15)
+              </div>
+
               <div class="time-slot">
-                <div class="time">8h-9h</div>
-                <div class="subject programming">💻 Fun Coding Challenge</div>
+                <div class="time">Tiết 1-5</div>
+                <div class="subject-detail school-class">
+                  <div class="study-title">📚 Các môn học chính thức</div>
+                  <div class="study-content">
+                    • Tham gia đầy đủ các tiết học<br />• Ghi chú kỹ, tích cực
+                    phát biểu<br />• Hoàn thành BT trên lớp
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">
+                🌆 Buổi Tối - Học ở nhà (18:30 - 21:00)
+              </div>
+
+              <div class="time-slot">
+                <div class="time">18:30-19:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">📝 Ôn bài + Làm BTVN</div>
+                  <div class="study-content">
+                    • Ôn lại bài học trong ngày<br />• Hoàn thành BTVN các môn
+                  </div>
+                  <div class="study-resources">📚 SGK, SBT các môn học</div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">19:30-20:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">
+                    🔬 Khoa học tự nhiên - Deep dive
+                  </div>
+                  <div class="study-content">
+                    • Ôn Lý/Hóa/Sinh theo lịch trường<br />• Xem video bổ trợ
+                    kiến thức
+                  </div>
+                  <div class="study-resources">
+                    🎥 Khan Academy Science, TED-Ed, Crash Course
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">20:30-21:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">📖 Đọc sách + Planning</div>
+                  <div class="study-content">
+                    • Đọc sách tự chọn 20 phút<br />• Lên kế hoạch ngày mai
+                  </div>
+                  <div class="study-resources">
+                    📚 Sách văn học, khoa học, lập trình
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- THỨ 3 -->
+          <div class="day-card">
+            <div class="day-title">🔶 THỨ BA - Creative Tuesday</div>
+
+            <div class="session">
+              <div class="session-header">
+                🌅 Buổi Sáng - Học ở nhà (7:30 - 12:00)
+              </div>
+
+              <div class="time-slot">
+                <div class="time">7:30-8:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">
+                    📜 Ngữ văn - Đọc hiểu & Phân tích
+                  </div>
+                  <div class="study-content">
+                    • Đọc bài học mới + Phân tích tác phẩm<br />• Luyện viết
+                    đoạn văn ngắn
+                  </div>
+                  <div class="study-resources">
+                    📖 SGK Văn 8, SBT Văn 8, tác phẩm bổ trợ
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">8:30-9:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🧮 Toán - Problem Solving</div>
+                  <div class="study-content">
+                    • Giải bài tập nâng cao<br />• Luyện các dạng toán khó
+                  </div>
+                  <div class="study-resources">
+                    📊 Violympic, Brilliant.org, Math challenges
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">9:30-10:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🌍 Tiếng Anh - Skills Practice</div>
+                  <div class="study-content">
+                    • Reading comprehension + Writing practice<br />• Grammar
+                    exercises
+                  </div>
+                  <div class="study-resources">
+                    📝 Cambridge English, Oxford materials
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">10:30-12:00</div>
+                <div class="subject-detail break-time">
+                  <div class="study-title">🍳 Breakfast + Free Study</div>
+                  <div class="study-content">
+                    • Ăn sáng + nghỉ ngơi<br />• Đọc sách, ôn bài tự do
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">🏫 Buổi Chiều - Học ở trường</div>
+              <div class="time-slot">
+                <div class="time">13:00-17:15</div>
+                <div class="subject-detail school-class">
+                  <div class="study-content">
+                    C.Nghệ, HDTNHN, GDDP, MT theo TKB
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">🌆 Buổi Tối - Học ở nhà</div>
+
+              <div class="time-slot">
+                <div class="time">18:30-19:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">📝 Review & Homework</div>
+                  <div class="study-content">• Ôn bài + BTVN các môn</div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">19:30-20:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">💻 Coding Project Time</div>
+                  <div class="study-content">
+                    • Phát triển project cá nhân<br />• Thử nghiệm công nghệ mới
+                  </div>
+                  <div class="study-resources">
+                    💡 GitHub, CodePen, personal projects
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- THỨ 4 -->
+          <div class="day-card">
+            <div class="day-title">🔷 THỨ TƯ - Project Wednesday</div>
+
+            <div class="session">
+              <div class="session-header">
+                🌅 Buổi Sáng - Học ở nhà (7:30 - 12:00)
+              </div>
+
+              <div class="time-slot">
+                <div class="time">7:30-8:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🔬 Khoa học tự nhiên Focus</div>
+                  <div class="study-content">
+                    • Ôn Lý/Hóa/Sinh theo môn học hôm nay<br />• Làm thí nghiệm
+                    ảo nếu có
+                  </div>
+                  <div class="study-resources">
+                    🧪 PhET Simulations, Virtual labs
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">8:30-10:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">💻 Major Programming Session</div>
+                  <div class="study-content">
+                    • Deep work on main project<br />• Code review +
+                    optimization
+                  </div>
+                  <div class="study-resources">
+                    🔧 VS Code, GitHub, documentation
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">10:00-12:00</div>
+                <div class="subject-detail break-time">
+                  <div class="study-title">🍳 Breakfast + Rest</div>
+                  <div class="study-content">
+                    • Ăn sáng + nghỉ ngơi<br />• Chuẩn bị đi học
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">🏫 Buổi Chiều - Học ở trường</div>
+              <div class="time-slot">
+                <div class="time">13:00-17:15</div>
+                <div class="subject-detail school-class">
+                  <div class="study-content">
+                    NNgữ, GDCD, KHTN, Văn theo TKB
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">🌆 Buổi Tối - Học ở nhà</div>
+
+              <div class="time-slot">
+                <div class="time">18:30-20:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">📚 Intensive Study Session</div>
+                  <div class="study-content">
+                    • Ôn tập sâu các môn khó<br />• Giải đề kiểm tra
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">20:00-21:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🎯 Weekly Project Review</div>
+                  <div class="study-content">
+                    • Đánh giá tiến độ các project<br />• Planning cho nửa cuối
+                    tuần
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- THỨ 5 -->
+          <div class="day-card">
+            <div class="day-title">🔶 THỨ NĂM - Innovation Thursday</div>
+
+            <div class="session">
+              <div class="session-header">
+                🌅 Buổi Sáng - Học ở nhà (7:30 - 12:00)
+              </div>
+
+              <div class="time-slot">
+                <div class="time">7:30-8:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🧮 Toán - Advanced Practice</div>
+                  <div class="study-content">
+                    • Bài tập nâng cao + Olympic Toán<br />• Luyện tư duy logic
+                  </div>
+                  <div class="study-resources">🏆 Violympic, AMO problems</div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">8:30-9:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🌍 English Advanced Skills</div>
+                  <div class="study-content">
+                    • Advanced reading + Essay writing<br />• Tech vocabulary
+                    expansion
+                  </div>
+                  <div class="study-resources">
+                    📰 BBC News, TED Talks, tech articles
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">9:30-10:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">💡 Innovation & Research</div>
+                  <div class="study-content">
+                    • Nghiên cứu công nghệ mới<br />• Brainstorm project ideas
+                  </div>
+                  <div class="study-resources">
+                    🔍 Tech blogs, research papers
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">10:30-12:00</div>
+                <div class="subject-detail break-time">
+                  <div class="study-title">🍳 Breakfast + Rest</div>
+                  <div class="study-content">
+                    • Ăn sáng + nghỉ ngơi<br />• Chuẩn bị đi học
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">🏫 Buổi Chiều - Học ở trường</div>
+              <div class="time-slot">
+                <div class="time">13:00-17:15</div>
+                <div class="subject-detail school-class">
+                  <div class="study-content">Nhạc, Văn, Toán theo TKB</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">🌆 Buổi Tối - Học ở nhà</div>
+
+              <div class="time-slot">
+                <div class="time">18:30-20:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">📚 Comprehensive Review</div>
+                  <div class="study-content">
+                    • Ôn tập tổng hợp tuần<br />• Chuẩn bị kiểm tra
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">20:00-21:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🎥 Educational Content</div>
+                  <div class="study-content">
+                    • Xem documentary khoa học<br />• TED Talks về technology
+                  </div>
+                  <div class="study-resources">
+                    📺 Netflix documentaries, YouTube educational
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- THỨ 6 -->
+          <div class="day-card">
+            <div class="day-title">🔷 THỨ SÁU - Practice Friday</div>
+
+            <div class="session">
+              <div class="session-header">
+                🌅 Buổi Sáng - Học ở nhà (7:30 - 12:00)
+              </div>
+
+              <div class="time-slot">
+                <div class="time">7:30-9:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🔄 Weekly Review & Practice</div>
+                  <div class="study-content">
+                    • Ôn tập toàn bộ kiến thức tuần<br />• Làm đề thi thử, kiểm
+                    tra
+                  </div>
+                  <div class="study-resources">
+                    📝 Test papers, practice exams
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">9:00-10:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">💻 Project Finalization</div>
+                  <div class="study-content">
+                    • Hoàn thiện project tuần<br />• Prepare presentation
+                  </div>
+                  <div class="study-resources">
+                    🎨 Canva, presentation tools
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">10:00-12:00</div>
+                <div class="subject-detail break-time">
+                  <div class="study-title">🍳 Breakfast + Rest</div>
+                  <div class="study-content">
+                    • Ăn sáng + nghỉ ngơi<br />• Chuẩn bị đi học
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">🏫 Buổi Chiều - Học ở trường</div>
+              <div class="time-slot">
+                <div class="time">13:00-17:15</div>
+                <div class="subject-detail school-class">
+                  <div class="study-content">LS&ĐL, KHTN, Toán theo TKB</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">🌆 Buổi Tối - Chill & Prepare</div>
+
+              <div class="time-slot">
+                <div class="time">18:30-19:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">📚 Light Review</div>
+                  <div class="study-content">• Ôn nhẹ + BTVN</div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">19:30-21:00</div>
+                <div class="subject-detail break-time">
+                  <div class="study-title">🎮 Relax & Entertainment</div>
+                  <div class="study-content">
+                    • Free time, games, movies<br />• Chuẩn bị tinh thần cho
+                    cuối tuần
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- THỨ 7 -->
+          <div class="day-card">
+            <div class="day-title">🔶 THỨ BẢY - Deep Learning Saturday</div>
+
+            <div class="session">
+              <div class="session-header">
+                🌅 Buổi Sáng - Tự học tại nhà (7:30 - 9:00)
+              </div>
+
+              <div class="time-slot">
+                <div class="time">7:30-8:30</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🧮 Advanced Math Session</div>
+                  <div class="study-content">
+                    • Toán nâng cao + Olympic problems<br />• Deep thinking
+                    challenges
+                  </div>
+                  <div class="study-resources">
+                    🏆 AMO, Brilliant, advanced textbooks
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">8:30-9:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">💻 Major Programming Project</div>
+                  <div class="study-content">
+                    • Deep coding session - main project<br />• Learn new
+                    programming concepts
+                  </div>
+                  <div class="study-resources">
+                    🚀 Python.org, advanced tutorials, GitHub
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">
+                🏫 Buổi Sáng - Học ở trường (9:00 - 11:30)
               </div>
               <div class="time-slot">
-                <div class="time">9h-11h</div>
-                <div class="subject school">🏫 Học thêm ở trường</div>
+                <div class="time">9:00-11:30</div>
+                <div class="subject-detail school-class">
+                  <div class="study-content">
+                    LS&ĐL, Tin, KHTN theo TKB trường
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">
+                🍽️ Buổi Trưa - Nghỉ ngơi (11:30 - 14:00)
               </div>
               <div class="time-slot">
-                <div class="time">11h-15h</div>
-                <div class="subject rest">🎮 Free time & Family</div>
+                <div class="time">11:30-14:00</div>
+                <div class="subject-detail break-time">
+                  <div class="study-title">🏠 Lunch & Rest</div>
+                  <div class="study-content">
+                    • Ăn trưa + nghỉ ngơi<br />• Family time
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">
+                🏫 Buổi Chiều - Học ở trường (14:00 - 16:00)
               </div>
               <div class="time-slot">
-                <div class="time">15h-16h</div>
-                <div class="subject english">🌍 English Fun Activities</div>
+                <div class="time">14:00-16:00</div>
+                <div class="subject-detail school-class">
+                  <div class="study-content">
+                    Các môn học bổ sung theo lịch trường
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">
+                🌆 Buổi Tối - Tự học & Project (18:00 - 21:00)
+              </div>
+
+              <div class="time-slot">
+                <div class="time">18:00-19:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🌍 English Immersion</div>
+                  <div class="study-content">
+                    • Watch English movies/series with subtitles<br />• Practice
+                    speaking with online tools
+                  </div>
+                  <div class="study-resources">
+                    🎬 Netflix, YouTube, HelloTalk app
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">19:00-20:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🔬 Science Exploration</div>
+                  <div class="study-content">
+                    • Science documentaries<br />• Hands-on experiments
+                  </div>
+                  <div class="study-resources">
+                    🧪 Home experiments, science channels
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">20:00-21:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">📊 Weekly Analysis & Planning</div>
+                  <div class="study-content">
+                    • Review week achievements<br />• Plan next week goals
+                  </div>
+                  <div class="study-resources">
+                    📝 Notion, planning templates
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHỦ NHẬT -->
+          <div class="day-card">
+            <div class="day-title">🔷 CHỦ NHẬT - Recovery & Creative Day</div>
+
+            <div class="session">
+              <div class="session-header">
+                🌅 Buổi Sáng - Creative Time (8:00 - 14:00)
+              </div>
+
+              <div class="time-slot">
+                <div class="time">8:00-10:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🎨 Creative Programming</div>
+                  <div class="study-content">
+                    • Fun coding challenges<br />• Create art with code<br />•
+                    Game development
+                  </div>
+                  <div class="study-resources">
+                    🎮 Scratch creative projects, p5.js, game engines
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">10:00-12:00</div>
+                <div class="subject-detail break-time">
+                  <div class="study-title">🏃‍♂️ Physical Activity & Family</div>
+                  <div class="study-content">
+                    • Exercise, sports<br />• Quality time with family
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">12:00-14:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">📚 Reading & Knowledge</div>
+                  <div class="study-content">
+                    • Read books (fiction/non-fiction)<br />• Explore new topics
+                  </div>
+                  <div class="study-resources">
+                    📖 Library books, online articles
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">
+                🏫 Buổi Chiều - Học ở trường (14:00 - 16:00)
               </div>
               <div class="time-slot">
-                <div class="time">16h-17h</div>
-                <div class="subject math">🧮 Math Games & Logic</div>
+                <div class="time">14:00-16:00</div>
+                <div class="subject-detail school-class">
+                  <div class="study-content">Học thêm theo lịch trường</div>
+                </div>
               </div>
+            </div>
+
+            <div class="session">
+              <div class="session-header">
+                🌆 Buổi Tối - Chill & Prepare (18:00 - 20:00)
+              </div>
+
               <div class="time-slot">
-                <div class="time">19h-20h</div>
-                <div class="subject review">🛠️ Prepare New Week</div>
+                <div class="time">18:00-19:00</div>
+                <div class="subject-detail study-home">
+                  <div class="study-title">🎯 Next Week Preparation</div>
+                  <div class="study-content">
+                    • Preview next week lessons<br />• Organize study materials
+                  </div>
+                  <div class="study-resources">
+                    📋 Weekly planner, digital tools
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-slot">
+                <div class="time">19:00-20:00</div>
+                <div class="subject-detail break-time">
+                  <div class="study-title">🎮 Free Time & Entertainment</div>
+                  <div class="study-content">
+                    • Relax, hobbies, entertainment<br />• Recharge for new week
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -596,97 +1015,139 @@
             <h3>🎯 Mốc đạt được mỗi tuần</h3>
 
             <div class="week-item">
-              <div class="week-title">Tuần 1-2: Làm quen</div>
+              <div class="week-title">Tuần 1-2: Làm quen & Thiết lập</div>
               <div class="week-goals">
-                • Hoàn thành 3 bài Scratch cơ bản<br />
-                • Học 20 từ vựng tiếng Anh tech<br />
-                • Giải 10 bài toán logic
+                ✅ Hoàn thành 3 Scratch projects cơ bản<br />
+                ✅ Học 25 từ vựng tiếng Anh tech mới<br />
+                ✅ Giải 15 bài toán logic/Olympic<br />
+                ✅ Điểm trung bình các môn ≥ 8.0<br />
+                ✅ Thiết lập workflow học tập
               </div>
             </div>
 
             <div class="week-item">
-              <div class="week-title">Tuần 3-4: Phát triển</div>
+              <div class="week-title">Tuần 3-4: Phát triển kỹ năng</div>
               <div class="week-goals">
-                • Tạo 1 game Scratch hoàn chỉnh<br />
-                • Đọc hiểu 5 bài văn tiếng Anh ngắn<br />
-                • Nắm vững phép toán phân số
+                ✅ Tạo 1 game Scratch hoàn chỉnh có âm thanh<br />
+                ✅ Đọc hiểu 3 bài báo tiếng Anh về tech<br />
+                ✅ Nắm vững phương trình bậc nhất<br />
+                ✅ Hoàn thành 1 project khoa học nhỏ<br />
+                ✅ Viết được đoạn văn tiếng Anh 150 từ
               </div>
             </div>
 
             <div class="week-item">
-              <div class="week-title">Tuần 5-8: Tiến bộ</div>
+              <div class="week-title">Tuần 5-8: Tiến bộ vững chắc</div>
               <div class="week-goals">
-                • Hoàn thành 1 mini project lớn<br />
-                • Nói tiếng Anh 5 phút liên tục<br />
-                • Giải bài toán đại số cơ bản
+                ✅ Code được Python basic (variables, loops)<br />
+                ✅ Nói tiếng Anh 3 phút liên tục về tech<br />
+                ✅ Giải bài toán đại số nâng cao<br />
+                ✅ Hoàn thành 1 mini research project<br />
+                ✅ Tạo portfolio có 5+ projects
               </div>
             </div>
 
             <div class="week-item">
-              <div class="week-title">Tuần 9-12: Thành thạo</div>
+              <div class="week-title">Tuần 9-12: Thành thạo & Sáng tạo</div>
               <div class="week-goals">
-                • Code được basic Python<br />
-                • Viết essay tiếng Anh 200 từ<br />
-                • Tự tin với toán lớp 8
+                ✅ Code Python với functions & modules<br />
+                ✅ Viết essay tiếng Anh 300+ từ<br />
+                ✅ Tự tin với toán lớp 8 + pre-algebra<br />
+                ✅ Tạo được app mobile đơn giản<br />
+                ✅ Present project bằng tiếng Anh
+              </div>
+            </div>
+
+            <div class="week-item">
+              <div class="week-title">Tuần 13-16: Chuyên sâu</div>
+              <div class="week-goals">
+                ✅ Master Python OOP basics<br />
+                ✅ IELTS practice score ≥ 5.5<br />
+                ✅ Giải được đề thi HSG cấp trường<br />
+                ✅ Complete 1 major project với GitHub<br />
+                ✅ Mentor junior students
               </div>
             </div>
           </div>
 
-          <h3>📚 Tài Liệu Học Tập</h3>
-
-          <div class="resource-category math">
-            <h4>Toán & Logic</h4>
+          <div class="resources-section">
+            <h4>🧮 Toán & Logic</h4>
             <ul class="resource-list">
               <li>
-                <a href="https://vi.khanacademy.org/math" target="_blank"
-                  >Khan Academy Math</a
+                <a
+                  href="https://vi.khanacademy.org/math/algebra-basics"
+                  target="_blank"
+                  >Khan Academy - Algebra Basics</a
                 >
               </li>
               <li>
-                <a href="https://brilliant.org/" target="_blank"
-                  >Brilliant Problem Solving</a
-                >
-              </li>
-              <li>
-                <a href="https://www.ixl.com/math/" target="_blank"
-                  >IXL Math Practice</a
-                >
-              </li>
-              <li>
-                <a href="https://artofproblemsolving.com/" target="_blank"
-                  >AoPS Advanced Math</a
+                <a
+                  href="https://brilliant.org/courses/algebra-basics/"
+                  target="_blank"
+                  >Brilliant - Problem Solving</a
                 >
               </li>
               <li>
                 <a href="https://www.mathway.com/" target="_blank"
-                  >Mathway Calculator</a
+                  >Mathway - Math Solver</a
+                >
+              </li>
+              <li>
+                <a href="https://violympic.vn/" target="_blank"
+                  >Violympic Toán</a
+                >
+              </li>
+              <li>
+                <a href="https://artofproblemsolving.com/" target="_blank"
+                  >AoPS - Advanced Math</a
                 >
               </li>
               <li>
                 <a href="https://www.desmos.com/calculator" target="_blank"
-                  >Desmos Graphing</a
+                  >Desmos Graphing Calculator</a
                 >
               </li>
             </ul>
           </div>
 
-          <div class="resource-category programming">
-            <h4>Lập Trình</h4>
+          <div class="resources-section">
+            <h4>💻 Lập trình & CS</h4>
             <ul class="resource-list">
               <li>
                 <a href="https://scratch.mit.edu/" target="_blank"
-                  >Scratch MIT</a
-                >
-              </li>
-              <li><a href="https://code.org/" target="_blank">Code.org</a></li>
-              <li>
-                <a href="https://blockly.games/" target="_blank"
-                  >Blockly Games</a
+                  >Scratch MIT - Visual Programming</a
                 >
               </li>
               <li>
-                <a href="https://www.tinkercad.com/" target="_blank"
-                  >Tinkercad 3D Design</a
+                <a href="https://replit.com/" target="_blank"
+                  >Replit - Online IDE</a
+                >
+              </li>
+              <li>
+                <a href="https://www.python.org/shell/" target="_blank"
+                  >Python.org - Official Tutorial</a
+                >
+              </li>
+              <li>
+                <a href="https://code.org/learn" target="_blank"
+                  >Code.org - CS Fundamentals</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.codecademy.com/learn/learn-python-3"
+                  target="_blank"
+                  >Codecademy Python</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/" target="_blank"
+                  >GitHub - Version Control</a
+                >
+              </li>
+              <li>
+                <a href="https://trinket.io/python" target="_blank"
+                  >Trinket - Python in Browser</a
                 >
               </li>
               <li>
@@ -694,33 +1155,22 @@
                   >MIT App Inventor</a
                 >
               </li>
-              <li>
-                <a href="https://replit.com/" target="_blank"
-                  >Replit Online IDE</a
-                >
-              </li>
-              <li>
-                <a href="https://www.w3schools.com/python/" target="_blank"
-                  >Python Tutorial</a
-                >
-              </li>
-              <li>
-                <a href="https://trinket.io/python" target="_blank"
-                  >Trinket Python</a
-                >
-              </li>
             </ul>
           </div>
 
-          <div class="resource-category english">
-            <h4>Tiếng Anh Tech</h4>
+          <div class="resources-section">
+            <h4>🌍 Tiếng Anh Tech</h4>
             <ul class="resource-list">
               <li>
-                <a href="https://www.duolingo.com/" target="_blank">Duolingo</a>
+                <a href="https://www.duolingo.com/" target="_blank"
+                  >Duolingo - Daily Practice</a
+                >
               </li>
               <li>
-                <a href="https://www.bbc.co.uk/learningenglish/" target="_blank"
-                  >BBC Learning English</a
+                <a
+                  href="https://www.bbc.co.uk/learningenglish/english/features/6-minute-english"
+                  target="_blank"
+                  >BBC 6 Minute English</a
                 >
               </li>
               <li>
@@ -730,28 +1180,35 @@
               </li>
               <li>
                 <a href="https://quizlet.com/" target="_blank"
-                  >Quizlet Vocabulary</a
+                  >Quizlet - Vocabulary</a
                 >
               </li>
               <li>
-                <a href="https://www.fluentu.com/" target="_blank"
+                <a href="https://www.ted.com/talks" target="_blank"
+                  >TED Talks</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.fluentu.com/blog/english/learn-english-technology/"
+                  target="_blank"
                   >FluentU Tech English</a
                 >
               </li>
               <li>
-                <a href="https://www.englishclass101.com/" target="_blank"
-                  >EnglishClass101</a
+                <a href="https://www.hellotalk.com/" target="_blank"
+                  >HelloTalk - Language Exchange</a
                 >
               </li>
             </ul>
           </div>
 
-          <div class="resource-category science">
-            <h4>Khoa Học & Video</h4>
+          <div class="resources-section">
+            <h4>🔬 Khoa học & STEM</h4>
             <ul class="resource-list">
               <li>
-                <a href="https://kids.nationalgeographic.com/" target="_blank"
-                  >Nat Geo Kids</a
+                <a href="https://phet.colorado.edu/vi/" target="_blank"
+                  >PhET Interactive Simulations</a
                 >
               </li>
               <li>
@@ -760,14 +1217,7 @@
                 >
               </li>
               <li>
-                <a href="https://phet.colorado.edu/vi/" target="_blank"
-                  >PhET Simulations</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://www.youtube.com/user/crashcourse"
-                  target="_blank"
+                <a href="https://www.youtube.com/c/crashcourse" target="_blank"
                   >Crash Course</a
                 >
               </li>
@@ -778,89 +1228,209 @@
               </li>
               <li>
                 <a href="https://www.youtube.com/c/3blue1brown" target="_blank"
-                  >3Blue1Brown</a
+                  >3Blue1Brown - Math Visualization</a
+                >
+              </li>
+              <li>
+                <a href="https://kids.nationalgeographic.com/" target="_blank"
+                  >National Geographic Kids</a
                 >
               </li>
             </ul>
           </div>
 
-          <div class="resource-category tools">
-            <h4>Công Cụ Hỗ Trợ</h4>
+          <div class="resources-section">
+            <h4>🛠️ Công cụ hỗ trợ</h4>
             <ul class="resource-list">
               <li>
                 <a href="https://code.visualstudio.com/" target="_blank"
-                  >VS Code Editor</a
+                  >VS Code - Code Editor</a
                 >
               </li>
-              <li><a href="https://github.com/" target="_blank">GitHub</a></li>
-              <li><a href="https://codepen.io/" target="_blank">CodePen</a></li>
               <li>
                 <a href="https://www.notion.so/" target="_blank"
-                  >Notion Notes</a
+                  >Notion - Note Taking</a
                 >
               </li>
               <li>
                 <a href="https://ankiweb.net/" target="_blank"
-                  >Anki Flashcards</a
+                  >Anki - Flashcards</a
                 >
               </li>
               <li>
                 <a href="https://www.canva.com/" target="_blank"
-                  >Canva Design</a
+                  >Canva - Design</a
+                >
+              </li>
+              <li>
+                <a href="https://codepen.io/" target="_blank"
+                  >CodePen - Web Playground</a
+                >
+              </li>
+              <li>
+                <a href="https://www.figma.com/" target="_blank"
+                  >Figma - UI Design</a
                 >
               </li>
             </ul>
           </div>
 
-          <div class="goals">
-            <h3>🎯 Mục Tiêu 6 Tháng Đầu</h3>
-            <div class="goal-item">
-              Hoàn thành Algebra Basics trên Khan Academy
+          <div
+            style="
+              background: linear-gradient(45deg, #4caf50, #45a049);
+              color: white;
+              padding: 18px;
+              border-radius: 12px;
+              margin-top: 20px;
+            "
+          >
+            <h3
+              style="
+                margin-bottom: 12px;
+                font-size: 1.2rem;
+                text-align: center;
+                color: white;
+                border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+                padding-bottom: 8px;
+              "
+            >
+              🎯 Mục tiêu Học kỳ 1 (2025-2026)
+            </h3>
+
+            <div
+              style="
+                margin-bottom: 8px;
+                padding-left: 18px;
+                position: relative;
+                font-size: 0.85rem;
+              "
+            >
+              <span style="position: absolute; left: 0">🏆</span>
+              Điểm trung bình tất cả môn ≥ 8.5
             </div>
-            <div class="goal-item">Tạo được 5+ Scratch projects hoàn chỉnh</div>
-            <div class="goal-item">Học thuộc 200+ từ vựng tiếng Anh tech</div>
-            <div class="goal-item">Giữ điểm cao ở tất cả môn học chính</div>
-            <div class="goal-item">Sẵn sàng chuyển sang Python text-based</div>
-            <div class="goal-item">Xây dựng portfolio 10+ projects đa dạng</div>
+            <div
+              style="
+                margin-bottom: 8px;
+                padding-left: 18px;
+                position: relative;
+                font-size: 0.85rem;
+              "
+            >
+              <span style="position: absolute; left: 0">💻</span>
+              Thành thạo Python & tạo được 10+ projects
+            </div>
+            <div
+              style="
+                margin-bottom: 8px;
+                padding-left: 18px;
+                position: relative;
+                font-size: 0.85rem;
+              "
+            >
+              <span style="position: absolute; left: 0">🌍</span>
+              IELTS practice score ≥ 6.0
+            </div>
+            <div
+              style="
+                margin-bottom: 8px;
+                padding-left: 18px;
+                position: relative;
+                font-size: 0.85rem;
+              "
+            >
+              <span style="position: absolute; left: 0">🧮</span>
+              Vượt trội ở Toán, tham gia HSG
+            </div>
+            <div
+              style="
+                margin-bottom: 8px;
+                padding-left: 18px;
+                position: relative;
+                font-size: 0.85rem;
+              "
+            >
+              <span style="position: absolute; left: 0">🎓</span>
+              Portfolio mạnh cho THPT chuyên
+            </div>
+            <div
+              style="
+                margin-bottom: 8px;
+                padding-left: 18px;
+                position: relative;
+                font-size: 0.85rem;
+              "
+            >
+              <span style="position: absolute; left: 0">🤝</span>
+              Leadership trong các project nhóm
+            </div>
           </div>
 
-          <div class="contact-info">
-            <h4>💡 Lời khuyên</h4>
-            <p>
-              <strong>Balance là chìa khóa:</strong> Không nên học quá nhiều một
-              lúc. Hãy duy trì đều đặn và tăng dần difficulty theo thời gian.
-              Nếu thấy stress thì giảm tải ngay!
+          <div
+            style="
+              background: #fff3e0;
+              padding: 15px;
+              border-radius: 10px;
+              margin-top: 15px;
+              text-align: center;
+            "
+          >
+            <h4 style="color: #f57c00; margin-bottom: 8px">
+              💡 Lời khuyên cho thành công
+            </h4>
+            <p style="font-size: 0.85rem; color: #ef6c00; line-height: 1.4">
+              <strong>Consistency > Intensity:</strong> Học đều đặn mỗi ngày tốt
+              hơn học dồn. <strong>Quality > Quantity:</strong> Focus và hiểu
+              sâu thay vì học nhiều mà nông cạn.
+              <strong>Practice > Theory:</strong> Thực hành nhiều, áp dụng ngay
+              kiến thức học được.
             </p>
-            <p>
-              <strong>Fun first:</strong> Ưu tiên sự thú vị và đam mê hơn là
-              hiệu quả ngắn hạn.
+            <p style="font-size: 0.8rem; color: #e65100; margin-top: 8px">
+              🎯 <strong>Nhớ:</strong> Mục tiêu là trở thành Software Engineer
+              giỏi, không phải chỉ để thi cử!
             </p>
           </div>
         </div>
       </div>
     </div>
 
-    <button class="print-btn no-print" onclick="window.print()">
-      🖨️ In/Save PDF
-    </button>
+    <button class="print-btn" onclick="window.print()">🖨️ In/Save PDF</button>
 
     <script>
       // Add smooth scrolling and interactive features
       document.querySelectorAll('a[href^="http"]').forEach((link) => {
-        link.addEventListener("click", function (e) {
-          // Links will open in new tab
-          this.target = "_blank";
-        });
+        link.target = "_blank";
       });
 
-      // Add hover effects
+      // Add hover effects for day cards
       document.querySelectorAll(".day-card").forEach((card) => {
         card.addEventListener("mouseenter", function () {
           this.style.transform = "translateY(-3px)";
+          this.style.boxShadow = "0 6px 20px rgba(33, 150, 243, 0.15)";
         });
 
         card.addEventListener("mouseleave", function () {
           this.style.transform = "translateY(0)";
+          this.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.05)";
+        });
+      });
+
+      // Progress tracking functionality
+      function checkWeeklyProgress() {
+        const currentWeek = Math.ceil(
+          (Date.now() - new Date("2025-09-15").getTime()) /
+            (7 * 24 * 60 * 60 * 1000)
+        );
+        console.log(`Hiện tại đang ở tuần ${currentWeek} của học kỳ`);
+      }
+
+      // Call on page load
+      checkWeeklyProgress();
+
+      // Add click to copy functionality for resources
+      document.querySelectorAll(".resource-list a").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          // Optional: Track which resources are being used most
+          console.log("Accessed resource:", this.textContent);
         });
       });
     </script>
